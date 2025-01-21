@@ -12,5 +12,3 @@ python3 manage.py createsuperuser
 Change superuser password:
 python manage.py changepassword <username>
 
-AdminPanel:
-![](/Users/shuvo/Desktop/Screenshot 2025-01-20 at 6.13.02 PM.png "Admin Panel")
