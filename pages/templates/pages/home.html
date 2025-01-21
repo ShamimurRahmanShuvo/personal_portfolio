@@ -1,0 +1,22 @@
+<!-- pages/templates/pages/home.html -->
+{% extends "base.html" %}
+{% block page_content %}
+    <!-- Hero Section -->
+        <section id="hero" class="hero section">
+            {% if profiles.profile_image %}
+            <img src="{{ profiles.profile_image.url }}" alt="" data-aos="fade-in">
+            {% else %}
+            <img src="static/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+            {% endif %}
+            <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>{{ profiles.profile_name }}</h2>
+                        <p>{{ profiles.profile_description }}</p>
+                        <a href="{% url 'about' %}" class="btn-get-started">About Me</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Hero Section -->
+
+{% endblock page_content%}

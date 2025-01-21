@@ -1,0 +1,64 @@
+<!-- publications/templates/publications/publication_index.html -->
+{% extends "base.html" %}
+
+{% block page_content %}
+<section id="resume" class="resume section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Publications</h2>
+            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+            <div class="row">
+                <h3 class="resume-title">Journal</h3>
+                <div class="table-responsive">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for journal in journals %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                <a href="{% url 'publication_detail' journal.pk %}">{{ journal.title }}</a>
+                            </td>
+                            <td>{{ journal.publication_year.year }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <h3 class="resume-title">Conference</h3>
+                <div class="table-responsive">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for conference in conferences %}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                <a href="{% url 'publication_detail' conference.pk %}">{{ conference.title }}</a>
+                            </td>
+                            <td>{{ conference.publication_year.year }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock page_content %}

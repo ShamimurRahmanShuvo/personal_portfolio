@@ -1,0 +1,61 @@
+<!-- resume/templates/resume/resume_index.html -->
+{% extends "base.html" %}
+
+{% block page_content %}
+<!-- Resume Section -->
+    <section id="resume" class="resume section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Resume</h2>
+            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+            <div class="row">
+                <!--div class="col-lg-6" data-aos="fade-up" data-aos-delay="100"-->
+                <h3 class="resume-title">Sumary</h3>
+                <div class="resume-item pb-0">
+                    <h4>{{ summary.name }}</h4>
+                    <p><em>{{ summary.overview }}</em></p>
+                    <ul>
+                        <li>{{ summary.address }}</li>
+                        <li>{{ summary.phone }}</li>
+                        <li>{{ summary.email }}</li>
+                    </ul>
+                </div><!-- Edn Resume Item -->
+
+                <h3 class="resume-title">Education</h3>
+                {% for education in educations %}
+                <div class="resume-item">
+                    <h4>{{ education.degree }} of {{ education.department }}</h4>
+                    <p><em>{{ education.school }}, {{ education.school_address }}</em></p>
+                    <h5>{{ education.duration }}</h5>
+                    {% if education.thesis_topic %}
+                    <p>{{ education.thesis_topic }}</p>
+                    {% endif %}
+                </div><!-- Edn Resume Item -->
+                {% endfor %}
+
+                <!--div class="col-lg-6" data-aos="fade-up" data-aos-delay="200"-->
+                <h3 class="resume-title">Professional Experience</h3>
+                {% for experience in experiences %}
+                <div class="resume-item">
+                    <h4>{{ experience.job_title }} @ {{ experience.company }}</h4>
+                    <p><em>{{ experience.company_address }} </em></p>
+                    <h5>{{ experience.start_year}} - {{ experience.end_year }}</h5>
+                    {% for job_responsibility in job_responsibilities %}
+                    {% if job_responsibility.job_id_id == experience.id %}
+                    <ul>
+                        <li>{{ job_responsibility.responsibility }}</li>
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                </div><!-- Edn Resume Item -->
+                {% endfor %}
+
+                <!--/div-->
+            </div>
+        </div>
+
+    </section><!-- /Resume Section -->
+{% endblock page_content %}
