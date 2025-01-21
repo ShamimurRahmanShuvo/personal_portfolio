@@ -11,4 +11,3 @@ python3 manage.py createsuperuser
 
 Change superuser password:
 python manage.py changepassword <username>
-
