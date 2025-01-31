@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.core.mail import send_mail
+from about.models import Biography
 
 
 # Create your views here.
 def contact_index(request):
-    context = {}
+    bio = Biography.objects.first()
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -27,5 +28,9 @@ def contact_index(request):
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.NOTIFY_EMAIL],
             )
-            context['result'] = "Email sent successfully"
+    context = {
+        'result': "Email sent successfully",
+        'bio': bio
+    }
+
     return render(request, "contact/contact_index.html", context)
